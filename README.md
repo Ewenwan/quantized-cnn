@@ -2,6 +2,18 @@
 
 Quantized-CNN is a novel framework of convolutional neural network (CNN) with simultaneous computation acceleration and model compression in the test-phase. Mobile devices can perform efficient on-site image classification via our Quantized-CNN, with only negligible loss in accuracy.
 
+    一种量化CNN的方法（Q-CNN），
+    量化卷积层中的滤波器和全连接层中的加权矩阵，
+    通过量化网络参数，
+    用近似内积计算有效地估计卷积和全连接层的响应,
+    最小化参数量化期间每层响应的估计误差，
+    更好地保持模型性能。
+    
+    步骤：
+        首先，全连接的层保持不变,用纠错量化所有卷积层。
+        其次，利用ILSVRC-12训练集对量化网络的全连接层进行微调，恢复分类精度。
+        最后，纠错量化微调的层网络的全连接。
+
 ## Installation
 
 We have prepared a file (500+MB) containing 1k images drawn from the ILSVRC-12 validation set for a more accurate speed-test. You can download it from [here](https://1drv.ms/u/s!Ahwjm8lejJYNp79irrjHGEmylB4F7w), and put it under the "ILSVRC12.227x227.IMG" directory.
